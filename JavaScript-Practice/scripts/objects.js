@@ -81,7 +81,7 @@ const numDetails = numbers.map(function(num){
     return {
         value: num,
         isEven: num%2==0
-    }
+    };
 });
 
 console.log(numDetails);
@@ -93,21 +93,67 @@ const movies2 = [
     },
     {
         movie: "Logan",
-        rating: 7.8
+        rating: 8.5
     },
     {
         movie: "Alien",
-        rating: 7.8
+        rating: 9.1
     }
 ];
 
 const mapMovies = movies2.map(function(m){
     return m.movie;
 });
+//Using Arrow Functions
+const mapMovies2 = movies2.map(m=>m.movie);
 
 console.log(mapMovies); // using map
+console.log(mapMovies2); // using map
 
+//Find
 
+const highRated = movies2.find(m=>m.rating>8);// will find first match NOT ALL RESULTS!!!
+console.log(highRated);
+
+//Filter
+
+const nums = [34,3,5,54,76,46,45,31,90,97];
+
+const oddNumbers = nums.filter(n=>n%2==1);
+const bignumbers = nums.filter(n=>n>50);
+console.log(oddNumbers);
+console.log(bignumbers);
+
+const allHighRated = movies2.filter(m=>m.rating>8); // WILL FIND ALL RESULTS AND ADD THEM TO LIST
+console.log(allHighRated);
+
+// Some and Every
+
+const ws = ['dog','dot','not','cot','lot'];
+
+const samelen = ws.every(w=>w.length==3);
+const sameLetter = ws.every(w=>w[1]==='o');
+const someLetter = ws.some(w=> w.includes('co'));
+const someStartsWithD = ws.some(w=>w[0]=='t');
+console.log(samelen);
+console.log(sameLetter);
+console.log(someLetter);
+console.log(someStartsWithD);
+
+//Spread Operator for Arrays and Objects
+
+const array = ["a","b"];
+
+//create a shallow copy of array
+
+const newArray = [...array];
+
+const obj = {
+    one: 1,
+    two: 2
+};
+
+const newObj = {...obj};
 
 
 
