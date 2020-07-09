@@ -155,5 +155,47 @@ const obj = {
 
 const newObj = {...obj};
 
+//Reduce ---- contains total or accumulator and current value
 
+console.log([3,5,6,8,9,11].reduce((total,currentValue)=> total+currentValue));
 
+const odds = [3,5,7,9,11];
+
+const result = odds.reduce((total,currVal)=>total*currVal);
+console.log(result);
+
+const grades = [89,96,58,77,62,93,81,99,73];
+
+const topScore = grades.reduce((maxVal,curVal)=>{
+    if(curVal > maxVal) {return curVal;}
+    return maxVal;
+});
+console.log(topScore);                  // maxVal    curVal       return
+
+//OR also using Math.max |    starts with   89         96           96
+
+const topScoreLib = grades.reduce((max,val)=>Math.max(max,val));
+console.log(topScoreLib);
+
+//We can start our initial value accumulator with particular value
+
+const sum = [2,4,6,8,0,12].reduce((total,value)=>total+value,10); //total=10 in the beginning
+
+console.log(sum);
+
+//Create object outta array
+
+const votes = ['y', 'n','y', 'n','y', 'n','y', 'n','y', 'n','y', 'n','y', 'n','y', 'n'];
+
+const countVotes = votes.reduce((tally,val)=>{
+    // if(val in tally){  //or simply ---- tally[val] 
+    //     tally[val]+=1;
+    // } else {
+    //     tally[val]=1;
+    // }
+    //We can re-write above with simple one
+    tally[val] = (tally[val] || 0) + 1;
+    return tally;
+},{});
+
+console.log(countVotes);

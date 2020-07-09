@@ -86,4 +86,4 @@ const personalMovieDB = {
 };
 
 
-console.log(personalMovieDB.toggleVisibleMyDB());
+//console.log(personalMovieDB.toggleVisibleMyDB());
