@@ -25,8 +25,27 @@ const movieDB = {
 };
 
 const ads = document.querySelectorAll('.promo__adv img'),
-      genre = document.querySelectorAll('div promo__bg');
-      console.log(genre);
+      div = document.querySelector('div.promo__bg'),
+      genre = div.querySelector('div.promo__genre'),
+      items = document.querySelectorAll('li.promo__interactive-item');
+      console.log(items);
 ads.forEach(item=> item.remove());
-//genre[0].replaceWith("драма");
+genre.textContent = "ДРАМА";
+div.style.backgroundImage = "url('./img/bg.jpg')";
+//This way
+// const {movies} = movieDB;
+// movies.sort();
 
+// for(let i=0;i<items.length;i++){
+//     items[i].textContent = `${i+1}. ${movies[i]}`;
+// }
+
+//OR
+
+const movieList = document.querySelector('ul.promo__interactive-list');
+
+movieList.innerHTML = '';
+movieDB.movies.sort();
+
+movieDB.movies.forEach((movie,i)=> movieList.innerHTML +=`<li class="promo__interactive-item">${i+1}. ${movie}
+<div class="delete"></div></li>`);

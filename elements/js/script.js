@@ -15,8 +15,8 @@ console.log(btns);
 const circles = document.getElementsByClassName('circle');
 console.log(circles); // HTMLCollection
 
-const hearts = document.querySelectorAll('.heart'),
-      wrapper = document.querySelector('.wrapper');
+const wrapper = document.querySelector('.wrapper'),
+      hearts = wrapper.querySelectorAll('.heart');
 
 console.log(hearts); // NodeList
 
@@ -24,7 +24,7 @@ hearts.forEach(item=>{ // only used with querySelector
     console.log(item);
 });
 
-const oneHeart = document.querySelector('.heart');
+const oneHeart = wrapper.querySelector('.heart');
 console.log(oneHeart);
 
 box.style.backgroundColor = 'blue';
