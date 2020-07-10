@@ -15,7 +15,8 @@ console.log(btns);
 const circles = document.getElementsByClassName('circle');
 console.log(circles); // HTMLCollection
 
-const hearts = document.querySelectorAll('.heart');
+const hearts = document.querySelectorAll('.heart'),
+      wrapper = document.querySelector('.wrapper');
 
 console.log(hearts); // NodeList
 
@@ -43,6 +44,23 @@ hearts.forEach(item => {
 });
 
 // Creating Elements
+const div = document.createElement("div");
+const text = document.createTextNode('Here I am');
+div.classList.add('black');
+// wrapper.append(div);
+// wrapper.appendChild(div);  old way to do this
+// wrapper.prepend(div);
+// hearts[0].before(div);
+//hearts[0].after(div);
+wrapper.insertBefore(div,hearts[2] );
+//circles[0].remove();
+//wrapper.removeChild(hearts[1]);   oldway
+hearts[0].replaceWith(circles[0]);
+// wrapper.replaceChild(circles[0], hearts[0])  oldway
 
 
+div.innerHTML = "<h1>Hello World</h1>";
 
+//div.textContent = "Hello"; //will be working only with strings not html tags
+
+div.insertAdjacentHTML('afterend', '<h2>Hello</h2>')
