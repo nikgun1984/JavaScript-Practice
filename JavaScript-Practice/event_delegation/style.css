@@ -1,0 +1,28 @@
+.btn-block{
+    display:grid;
+    gap: 50px;
+    grid-template-columns: repeat(10, 50px);
+    background-color: grey;
+    width: 90%;
+    padding: 50px;
+    margin: 20px;
+
+}
+
+.blue{
+    background-color: blue;
+}
+
+.red{
+    background-color: crimson;
+}
+
+button{
+    background-color: yellow;
+    width: 100px;
+    padding: 30px;
+}
+
+button:hover{
+    background-color: cornflowerblue;
+}
