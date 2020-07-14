@@ -15,7 +15,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
 
     }
 
-    function showTabContent(i = 0){
+    function showTabContent(i = 0){ // ES6 feature if no arguments provided, default value will be 0
         tabContent[i].classList.add('show','fade');
         tabContent[i].classList.remove('hide');
         tabs[i].classList.add('tabheader__item_active');
