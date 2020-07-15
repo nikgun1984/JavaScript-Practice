@@ -127,7 +127,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
         }
     });
     //modal will be open automatically after 3 second if it was not open yet otherwise it wont be open
-    const modalTimerId = setTimeout(openModal, 5000);
+    //const modalTimerId = setTimeout(openModal, 5000);
     
     //once you reach the end of the page you will get modal open
     //but it will be open once
@@ -140,4 +140,79 @@ window.addEventListener('DOMContentLoaded', ()=>{
     }
     
     window.addEventListener('scroll', showModalByScroll);
+
+    // Cards in the end of the page
+
+    class Menu {
+        constructor(src,alt,title,descr,price,parentSelector){
+            this.src = src; // we need src and alt if no image is available
+            this.alt = alt;
+            this.title = title;
+            this.descr = descr;
+            this.price = price;
+            this.parent = document.querySelector(parentSelector);
+            this.transfer = 71;
+            this.changeToCurrency();
+        }
+        
+        changeToCurrency() {
+            this.price = this.price*this.transfer;
+        }
+
+        render(){
+            const element = document.createElement('div');
+            element.innerHTML = `
+            <div class = "menu__item">
+                <img src = ${this.src} alt = ${this.alt}>
+                <h3 class = "menu__item-subtitle">${this.title}</h3> 
+                <div class = "menu__item-descr">${this.descr}</div> 
+                <div class = "menu__item-divider"></div> 
+                <div class = "menu__item-price">
+                    <div class = "menu__item-cost">Price</div> 
+                    <div class = "menu__item-total"><span>${this.price}</span> rubles/day </div> 
+                </div> 
+            </div>
+            `;
+            this.parent.append(element);
+        }
+        
+    }
+
+    new Menu(
+        'img/tabs/elite.jpg',
+        'elite',
+        'Premium Menu',
+        'In the Premium menu, we use not only a beautiful packaging design, but also high-quality execution of dishes. Red fish, seafood, fruits - a restaurant menu without going to a restaurant!',
+        9,
+        '.menu .container'
+    ).render();
+
+    new Menu(
+        'img/tabs/fitness.jpg',
+        'fitness',
+        'Fitness Menu',
+        'The Fitness menu is a new approach to cooking: more fresh vegetables and fruits. Product of active and healthy people. This is a brand new product with the best price and high quality!',
+        7,
+        '.menu .container'
+    ).render();
+
+    new Menu(
+        "img/tabs/lean.jpg",
+        'lean',
+        'Lean Menu',
+        'The Lean menu is a careful selection of ingredients: the complete absence of animal products, almond,oat, coconut or buckwheat milk, the right amount of protein due to tofu and imported vegetarian steaks.',
+        10,
+        '.menu .container'
+    ).render();
+
+    new Menu(
+        "img/tabs/keto.jpg",
+        'keto',
+        'Keto Menu',
+        'Our ketogenic diet, meals and snacks should center around the following foods: eggs, poultry, fish, meat, nuts, healthy fats, avocados, non-starchy vegetables, condiments',
+        12,
+        '.menu .container'
+    ).render();
 });
+
+
