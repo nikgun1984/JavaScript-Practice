@@ -144,12 +144,13 @@ window.addEventListener('DOMContentLoaded', ()=>{
     // Cards in the end of the page
 
     class Menu {
-        constructor(src,alt,title,descr,price,parentSelector){
+        constructor(src,alt,title,descr,price,parentSelector, ...classes){
             this.src = src; // we need src and alt if no image is available
             this.alt = alt;
             this.title = title;
             this.descr = descr;
             this.price = price;
+            this.classes = classes;
             this.parent = document.querySelector(parentSelector);
             this.transfer = 71;
             this.changeToCurrency();
@@ -161,8 +162,13 @@ window.addEventListener('DOMContentLoaded', ()=>{
 
         render(){
             const element = document.createElement('div');
+            if(this.classes.length === 0){
+                this.element = 'menu__item';
+                element.classList.add(this.element);
+            } else {
+                this.classes.forEach(className => element.classList.add(className));
+            }
             element.innerHTML = `
-            <div class = "menu__item">
                 <img src = ${this.src} alt = ${this.alt}>
                 <h3 class = "menu__item-subtitle">${this.title}</h3> 
                 <div class = "menu__item-descr">${this.descr}</div> 
@@ -171,21 +177,21 @@ window.addEventListener('DOMContentLoaded', ()=>{
                     <div class = "menu__item-cost">Price</div> 
                     <div class = "menu__item-total"><span>${this.price}</span> rubles/day </div> 
                 </div> 
-            </div>
             `;
             this.parent.append(element);
         }
         
     }
 
-    new Menu(
-        'img/tabs/elite.jpg',
-        'elite',
-        'Premium Menu',
-        'In the Premium menu, we use not only a beautiful packaging design, but also high-quality execution of dishes. Red fish, seafood, fruits - a restaurant menu without going to a restaurant!',
-        9,
-        '.menu .container'
-    ).render();
+    // new Menu(
+    //     'img/tabs/elite.jpg',
+    //     'elite',
+    //     'Premium Menu',
+    //     'In the Premium menu, we use not only a beautiful packaging design, but also high-quality execution of dishes. Red fish, seafood, fruits - a restaurant menu without going to a restaurant!',
+    //     9,
+    //     '.menu .container',
+    //     'menu__item'
+    // ).render();
 
     new Menu(
         'img/tabs/fitness.jpg',
@@ -193,7 +199,8 @@ window.addEventListener('DOMContentLoaded', ()=>{
         'Fitness Menu',
         'The Fitness menu is a new approach to cooking: more fresh vegetables and fruits. Product of active and healthy people. This is a brand new product with the best price and high quality!',
         7,
-        '.menu .container'
+        '.menu .container',
+        'menu__item'
     ).render();
 
     new Menu(
@@ -202,16 +209,18 @@ window.addEventListener('DOMContentLoaded', ()=>{
         'Lean Menu',
         'The Lean menu is a careful selection of ingredients: the complete absence of animal products, almond,oat, coconut or buckwheat milk, the right amount of protein due to tofu and imported vegetarian steaks.',
         10,
-        '.menu .container'
+        '.menu .container',
+        'menu__item'
     ).render();
 
     new Menu(
         "img/tabs/keto.jpg",
         'keto',
         'Keto Menu',
-        'Our ketogenic diet, meals and snacks should center around the following foods: eggs, poultry, fish, meat, nuts, healthy fats, avocados, non-starchy vegetables, condiments',
+        'Our ketogenic diet, meals and snacks are centered around the following foods: eggs, poultry, fish, meat, nuts, healthy fats, avocados, non-starchy vegetables, condiments',
         12,
-        '.menu .container'
+        '.menu .container',
+        'menu__item'
     ).render();
 });
 
