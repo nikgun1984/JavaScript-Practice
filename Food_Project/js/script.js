@@ -87,4 +87,57 @@ window.addEventListener('DOMContentLoaded', ()=>{
     }
 
     setClock('.timer', deadLine);
+
+    //Modal Window
+
+    const modalTrigger = document.querySelectorAll('[data-modal]'),
+          modal = document.querySelector('.modal'),
+          modalCloseBtn = document.querySelector('[data-close]');
+    
+    modalTrigger.forEach(btn => {
+        btn.addEventListener('click',()=>{
+            
+        });
+    });
+
+    function closeModal(){
+        modal.classList.add('hide');
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+    }
+
+    function openModal(){
+        modal.classList.add('show');
+        modal.classList.remove('hide');
+        document.body.style.overflow = 'hidden';// prevents from scrolling while using modal
+        clearInterval(modalTimerId);
+    }
+
+    modalCloseBtn.addEventListener('click',closeModal);
+
+    modal.addEventListener('click',(e)=>{
+        if(e.target === modal){
+            closeModal();
+        }
+    });
+    //press 'escape' to leave the modal window 
+    document.addEventListener('keydown', (e) => {
+        if(e.code === 'Escape' && modal.classList.contains('show')){
+            closeModal();
+        }
+    });
+    //modal will be open automatically after 3 second if it was not open yet otherwise it wont be open
+    const modalTimerId = setTimeout(openModal, 5000);
+    
+    //once you reach the end of the page you will get modal open
+    //but it will be open once
+    function showModalByScroll(){
+        if(window.pageYOffset +document.documentElement.clientHeight >=document.documentElement.scrollHeight){
+            openModal();
+            //will be only open once and then wont bother u again
+            window.removeEventListener('scroll',showModalByScroll);
+        }
+    }
+    
+    window.addEventListener('scroll', showModalByScroll);
 });
